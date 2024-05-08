@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp"
+    android:backgroundTint="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/groupName"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/edt_style_1"
+            android:hint="@string/guruh_nomi"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="#1A4E79"
+            android:textColorHint="#B1ACAC"
+            android:textSize="@dimen/_20ssp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/edt_style_1">
+
+            <Spinner
+                android:id="@+id/spinnerMentor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp" />
+
+            <TextView
+                android:id="@+id/courseMentor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="47dp"
+                android:layout_marginBottom="1dp"
+                android:background="#E2DFDF"
+                android:gravity="center_vertical"
+                android:hint="@string/mentorni_tanlang"
+                android:paddingStart="10dp"
+                android:paddingEnd="1dp"
+                android:textColor="#1A4E79"
+                android:textColorHint="#B1ACAC"
+                android:textSize="@dimen/_20ssp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/edt_style_1">
+
+            <Spinner
+                android:id="@+id/spinnerTime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp" />
+
+            <TextView
+                android:id="@+id/courseTime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="47dp"
+                android:layout_marginBottom="1dp"
+                android:background="#E2DFDF"
+                android:gravity="center_vertical"
+                android:hint="@string/vaqti"
+                android:paddingStart="10dp"
+                android:paddingEnd="1dp"
+                android:textColor="#1A4E79"
+                android:textColorHint="#B1ACAC"
+                android:textSize="@dimen/_20ssp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/edt_style_1">
+
+            <Spinner
+                android:id="@+id/spinnerDay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp" />
+
+            <TextView
+                android:id="@+id/courseDay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="47dp"
+                android:layout_marginBottom="1dp"
+                android:background="#E2DFDF"
+                android:gravity="center_vertical"
+                android:hint="@string/kunlari"
+                android:paddingStart="10dp"
+                android:paddingEnd="1dp"
+                android:textColor="#1A4E79"
+                android:textColorHint="#B1ACAC"
+                android:textSize="@dimen/_20ssp" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:text="@string/yopish"
+                android:textColor="#1A4E79"
+                android:textSize="@dimen/_15ssp"
+                app:cornerRadius="0dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:text="@string/o_zgartirish"
+                android:textColor="#FFB800"
+                android:textSize="@dimen/_15ssp"
+                app:cornerRadius="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

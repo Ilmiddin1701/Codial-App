@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Codial_App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="codial_uz">codial.uz</string>
+    <string name="kurslar">Kurslar</string>
+    <string name="guruhlar">Guruhlar</string>
+    <string name="mentorlar">Mentorlar</string>
+    <string name="barcha_kurslar_ro_yxarti">Barcha kurslar ro\'yxarti</string>
+    <string name="android">Android dasturlash</string>
+    <string name="kurs_nomi">Kurs nomi</string>
+    <string name="kurs_haqida">Kurs haqida</string>
+    <string name="yopish">Yopish</string>
+    <string name="qo_shish">Qo\'shish</string>
+    <string name="talaba_qo_shish">Talaba qo\'shish</string>
+    <string name="familiyasi">Familiyasi</string>
+    <string name="telefon_raqami">Telefon raqami</string>
+    <string name="ismi">Ismi</string>
+    <string name="date_1">12/12/2024</string>
+    <string name="ilhomjon_ibragimov">Ilhomjon Ibragimov</string>
+    <string name="yangi_mentor_qo_shish">Yangi mentor qo\'shish</string>
+    <string name="barcha_kurslar">Barcha kurslar</string>
+    <string name="codial_1">Codial 1</string>
+    <string name="o_quvchilar_soni_20_ta">O’quvchilar soni: 20 ta</string>
+    <string name="guruhga_darsni_boshlash">Guruhga darsni boshlash</string>
+    <string name="barcha_o_quvchilar_ro_yxati">Barcha o\'quvchilar ro\'yxati</string>
+    <string name="_12_12_2024">12/12/2024</string>
+    <string name="dars_vaqti_16_30_18_30">Dars vaqti: 16:30 - 18:30</string>
+    <string name="yangi_guruh_qo_shish">Yangi guruh qo\'shish</string>
+    <string name="guruh_nomi">Guruh nomi</string>
+    <string name="mentorni_tanlang">Mentorni tanlang</string>
+    <string name="kunlari">Kunlari</string>
+    <string name="vaqti">Vaqti</string>
+    <string name="saqlash">Saqlash</string>
+    <string name="o_zgartirish">O\'zgartirish</string>
+    <string name="kuni_dushanba_chorshanba_juma">Kuni: Dushanba/Chorshanba/Juma</string>
+</resources>
