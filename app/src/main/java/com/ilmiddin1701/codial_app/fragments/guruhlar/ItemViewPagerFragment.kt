@@ -9,18 +9,14 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.ilmiddin1701.codial_app.R
 import com.ilmiddin1701.codial_app.adapters.RvAdapter1
 import com.ilmiddin1701.codial_app.adapters.SpinnerAdapter
-import com.ilmiddin1701.codial_app.databinding.CustomDialog1Binding
 import com.ilmiddin1701.codial_app.databinding.FragmentItemViewPagerBinding
 import com.ilmiddin1701.codial_app.databinding.ItemEditGroupBinding
 import com.ilmiddin1701.codial_app.db.MyDbHelper
-import com.ilmiddin1701.codial_app.models.CourseData
 import com.ilmiddin1701.codial_app.models.GroupData
 import com.ilmiddin1701.codial_app.models.Spinner
 import com.ilmiddin1701.codial_app.models.StudentData
@@ -34,7 +30,7 @@ class ItemViewPagerFragment : Fragment(), RvAdapter1.RvAction {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         onResume()
         return binding.root
     }
@@ -132,8 +128,8 @@ class ItemViewPagerFragment : Fragment(), RvAdapter1.RvAction {
         itemEditGroup.btnAdd.setOnClickListener {
             if (itemEditGroup.groupName.text.isNotEmpty() && itemEditGroup.courseMentor.text.isNotEmpty() && itemEditGroup.courseTime.text.isNotEmpty() && itemEditGroup.courseDay.text.isNotEmpty()) {
                 val mentor = itemEditGroup.courseMentor.text.toString()
-                var firstName = mentor.substringBefore(' ')
-                var lastName = mentor.substringAfter(' ')
+                val firstName = mentor.substringBefore(' ')
+                val lastName = mentor.substringAfter(' ')
                 groupData.name = itemEditGroup.groupName.text.toString()
                 groupData.mentorId?.firstName = firstName
                 groupData.mentorId?.lastName = lastName
