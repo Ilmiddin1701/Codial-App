@@ -27,7 +27,9 @@
             android:paddingEnd="10dp"
             android:textColor="#1A4E79"
             android:textColorHint="#B1ACAC"
-            android:textSize="@dimen/_20ssp" />
+            android:textSize="@dimen/_20ssp"
+            tools:ignore="Autofill"
+            android:inputType="text" />
 
         <FrameLayout
             android:layout_width="match_parent"
