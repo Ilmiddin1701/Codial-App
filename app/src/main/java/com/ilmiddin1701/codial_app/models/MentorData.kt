@@ -28,12 +28,6 @@ class MentorData{
         this.courseId = courseId
     }
 
-    constructor(firstName: String?, lastName: String?, phoneNumber: String?) {
-        this.firstName = firstName
-        this.lastName = lastName
-        this.phoneNumber = phoneNumber
-    }
-
     override fun toString(): String {
         return "MentorData(id=$id, firstName=$firstName, lastName=$lastName, number=$phoneNumber, courseId=$courseId)"
     }

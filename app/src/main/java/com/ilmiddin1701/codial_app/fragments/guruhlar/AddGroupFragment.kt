@@ -10,11 +10,9 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.ilmiddin1701.codial_app.adapters.SpinnerAdapter
-
 import com.ilmiddin1701.codial_app.databinding.FragmentAddGroupBinding
 import com.ilmiddin1701.codial_app.db.MyDbHelper
 import com.ilmiddin1701.codial_app.models.GroupData
-import com.ilmiddin1701.codial_app.models.MentorData
 import com.ilmiddin1701.codial_app.models.Spinner
 import com.ilmiddin1701.codial_app.utils.MyData
 
@@ -24,7 +22,7 @@ class AddGroupFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         myDbHelper = MyDbHelper(requireContext())
         val mentorList = ArrayList<Spinner>()
         val timeList = arrayListOf(

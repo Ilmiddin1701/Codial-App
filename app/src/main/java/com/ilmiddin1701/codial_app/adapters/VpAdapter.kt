@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.ilmiddin1701.codial_app.adapters
 
 import androidx.fragment.app.Fragment

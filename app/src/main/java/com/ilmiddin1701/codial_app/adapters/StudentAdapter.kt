@@ -1,5 +1,6 @@
 package com.ilmiddin1701.codial_app.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -10,6 +11,7 @@ import com.ilmiddin1701.codial_app.models.StudentData
 class StudentAdapter(var rvAction6: RvAction6, var list: ArrayList<StudentData>): Adapter<StudentAdapter.Vh>() {
 
     inner class Vh(var itemStudentBinding: ItemStudentBinding): ViewHolder(itemStudentBinding.root){
+        @SuppressLint("SetTextI18n")
         fun onBind(studentData: StudentData, position: Int){
             itemStudentBinding.btnEdit.setOnClickListener {
                 rvAction6.editClick(studentData, position)

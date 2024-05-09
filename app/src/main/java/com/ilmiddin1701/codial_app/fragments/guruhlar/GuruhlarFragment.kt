@@ -13,7 +13,6 @@ import com.ilmiddin1701.codial_app.adapters.GroupAdapter
 import com.ilmiddin1701.codial_app.databinding.FragmentGuruhlarBinding
 import com.ilmiddin1701.codial_app.db.MyDbHelper
 import com.ilmiddin1701.codial_app.models.CourseData
-import com.ilmiddin1701.codial_app.models.GroupData
 import com.ilmiddin1701.codial_app.utils.MyData
 
 class GuruhlarFragment : Fragment() {
@@ -23,7 +22,7 @@ class GuruhlarFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val navOption = NavOptions.Builder()
         navOption.setEnterAnim(R.anim.enter_anim)
         navOption.setExitAnim(R.anim.exit_anim)

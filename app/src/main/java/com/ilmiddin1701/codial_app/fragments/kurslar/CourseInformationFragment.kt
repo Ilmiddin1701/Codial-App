@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.ilmiddin1701.codial_app.databinding.FragmentCourseInformationBinding
 import com.ilmiddin1701.codial_app.db.MyDbHelper
-import com.ilmiddin1701.codial_app.utils.MyData
 
 class CourseInformationFragment : Fragment() {
     private val binding by lazy { FragmentCourseInformationBinding.inflate(layoutInflater) }
@@ -16,7 +15,7 @@ class CourseInformationFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val p = arguments?.getInt("keyPosition")
         binding.apply {
             btnBack.setOnClickListener {

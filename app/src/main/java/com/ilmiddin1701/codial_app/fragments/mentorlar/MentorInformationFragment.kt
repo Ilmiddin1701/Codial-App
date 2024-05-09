@@ -12,11 +12,9 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.ilmiddin1701.codial_app.R
 import com.ilmiddin1701.codial_app.adapters.MentorAdapter
-import com.ilmiddin1701.codial_app.databinding.CustomDialog1Binding
 import com.ilmiddin1701.codial_app.databinding.CustomDialog2Binding
 import com.ilmiddin1701.codial_app.databinding.FragmentMentorInformationBinding
 import com.ilmiddin1701.codial_app.db.MyDbHelper
-import com.ilmiddin1701.codial_app.models.CourseData
 import com.ilmiddin1701.codial_app.models.MentorData
 import com.ilmiddin1701.codial_app.utils.MyData
 

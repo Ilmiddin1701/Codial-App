@@ -1,5 +1,6 @@
 package com.ilmiddin1701.codial_app.fragments.guruhlar
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ class GroupViewFragment : Fragment(), StudentAdapter.RvAction6 {
     private val binding by lazy { FragmentGroupViewBinding.inflate(layoutInflater) }
     lateinit var myDbHelper: MyDbHelper
     lateinit var studentAdapter: StudentAdapter
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,6 +55,7 @@ class GroupViewFragment : Fragment(), StudentAdapter.RvAction6 {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onResume() {
         super.onResume()
         myDbHelper = MyDbHelper(requireContext())

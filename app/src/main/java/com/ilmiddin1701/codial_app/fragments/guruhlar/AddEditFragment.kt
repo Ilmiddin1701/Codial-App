@@ -24,7 +24,7 @@ class AddEditFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding.apply {
             myDbHelper = MyDbHelper(requireContext())
             val addOrEdit = arguments?.getInt("addOrEdit")

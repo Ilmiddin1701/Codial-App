@@ -1,7 +1,6 @@
 package com.ilmiddin1701.codial_app.fragments.guruhlar
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import androidx.core.os.bundleOf
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.ilmiddin1701.codial_app.R
-import com.ilmiddin1701.codial_app.adapters.RvAdapter1
 import com.ilmiddin1701.codial_app.adapters.RvAdapter2
 import com.ilmiddin1701.codial_app.adapters.SpinnerAdapter
 import com.ilmiddin1701.codial_app.databinding.FragmentItemViewPager2Binding
@@ -33,7 +31,7 @@ class ItemViewPager2Fragment : Fragment(), RvAdapter2.RvAction5 {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         onResume()
         return binding.root
     }
@@ -131,8 +129,8 @@ class ItemViewPager2Fragment : Fragment(), RvAdapter2.RvAction5 {
         itemEditGroup.btnAdd.setOnClickListener {
             if (itemEditGroup.groupName.text.isNotEmpty() && itemEditGroup.courseMentor.text.isNotEmpty() && itemEditGroup.courseTime.text.isNotEmpty() && itemEditGroup.courseDay.text.isNotEmpty()) {
                 val mentor = itemEditGroup.courseMentor.text.toString()
-                var firstName = mentor.substringBefore(' ')
-                var lastName = mentor.substringAfter(' ')
+                val firstName = mentor.substringBefore(' ')
+                val lastName = mentor.substringAfter(' ')
                 groupData.name = itemEditGroup.groupName.text.toString()
                 groupData.mentorId?.firstName = firstName
                 groupData.mentorId?.lastName = lastName
