@@ -26,7 +26,8 @@
                 android:layout_height="match_parent"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                android:src="@drawable/ic_back" />
+                android:src="@drawable/ic_back"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -50,7 +51,9 @@
             android:padding="10dp"
             android:textColor="#1A4E79"
             android:textColorHint="#B1ACAC"
-            android:textSize="@dimen/_20ssp" />
+            android:textSize="@dimen/_20ssp"
+            tools:ignore="Autofill"
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/edtLastName"
@@ -64,7 +67,9 @@
             android:padding="10dp"
             android:textColor="#1A4E79"
             android:textColorHint="#B1ACAC"
-            android:textSize="@dimen/_20ssp" />
+            android:textSize="@dimen/_20ssp"
+            android:inputType="text"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/edtPhoneNumber"
@@ -78,7 +83,9 @@
             android:padding="10dp"
             android:textColor="#1A4E79"
             android:textColorHint="#B1ACAC"
-            android:textSize="@dimen/_20ssp" />
+            android:textSize="@dimen/_20ssp"
+            tools:ignore="Autofill"
+            android:inputType="phone" />
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
