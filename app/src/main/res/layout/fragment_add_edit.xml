@@ -26,7 +26,8 @@ tools:context=".fragments.guruhlar.AddEditFragment">
             android:layout_height="match_parent"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tvTitle"
@@ -51,7 +52,9 @@ tools:context=".fragments.guruhlar.AddEditFragment">
         android:paddingEnd="10dp"
         android:textColor="#1A4E79"
         android:textColorHint="#B1ACAC"
-        android:textSize="@dimen/_20ssp" />
+        android:textSize="@dimen/_20ssp"
+        android:inputType="text"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/edtLastName"
@@ -66,7 +69,9 @@ tools:context=".fragments.guruhlar.AddEditFragment">
         android:paddingEnd="10dp"
         android:textColor="#1A4E79"
         android:textColorHint="#B1ACAC"
-        android:textSize="@dimen/_20ssp" />
+        android:textSize="@dimen/_20ssp"
+        android:inputType="text"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/edtPhoneNumber"
@@ -81,7 +86,9 @@ tools:context=".fragments.guruhlar.AddEditFragment">
         android:paddingEnd="10dp"
         android:textColor="#1A4E79"
         android:textColorHint="#B1ACAC"
-        android:textSize="@dimen/_20ssp" />
+        android:textSize="@dimen/_20ssp"
+        android:inputType="phone"
+        tools:ignore="Autofill" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -113,7 +120,8 @@ tools:context=".fragments.guruhlar.AddEditFragment">
             android:src="@drawable/ic_date"
             android:layout_gravity="center_vertical|end"
             android:paddingEnd="10dp"
-            android:paddingStart="10dp" />
+            android:paddingStart="10dp"
+            tools:ignore="ContentDescription" />
     </FrameLayout>
 </LinearLayout>
 
