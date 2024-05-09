@@ -39,6 +39,23 @@
                 android:gravity="center_vertical|end">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/btnCall"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="#4CAF50"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="15dp"
+                        android:src="@drawable/ic_call"
+                        tools:ignore="ContentDescription" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:id="@+id/btnEdit"
                     android:layout_width="55dp"
                     android:layout_height="55dp"

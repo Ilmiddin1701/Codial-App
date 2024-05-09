@@ -1,6 +1,10 @@
 package com.ilmiddin1701.codial_app.fragments.guruhlar
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +13,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import com.github.florent37.runtimepermission.kotlin.askPermission
 import com.ilmiddin1701.codial_app.R
 import com.ilmiddin1701.codial_app.adapters.StudentAdapter
 import com.ilmiddin1701.codial_app.databinding.FragmentGroupViewBinding
@@ -74,6 +79,31 @@ class GroupViewFragment : Fragment(), StudentAdapter.RvAction6 {
         }
         studentAdapter = StudentAdapter(this@GroupViewFragment, listStudents)
         binding.rv.adapter = studentAdapter
+    }
+
+    override fun callClick(studentData: StudentData) {
+        askPermission(Manifest.permission.CALL_PHONE){
+            val phoneNumber = studentData.number
+            val intent = Intent(Intent(Intent.ACTION_CALL))
+            intent.data = Uri.parse("tel:$phoneNumber")
+            startActivity(intent)
+        }.onDeclined { e ->
+            if (e.hasDenied()) {
+                AlertDialog.Builder(requireContext())
+                    .setMessage("Ruxsat bermasangiz ilova ishlay olmaydi ruxsat bering...")
+                    .setPositiveButton("Ha") { dialog, which ->
+                        e.askAgain()
+                    }
+                    .setNegativeButton("Yo'q") { dialog, which ->
+                        dialog.dismiss();
+                    }
+                    .show();
+            }
+
+            if(e.hasForeverDenied()) {
+                e.goToSettings();
+            }
+        }
     }
 
     override fun editClick(studentData: StudentData, position: Int) {

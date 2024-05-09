@@ -13,6 +13,9 @@ class StudentAdapter(var rvAction6: RvAction6, var list: ArrayList<StudentData>)
     inner class Vh(var itemStudentBinding: ItemStudentBinding): ViewHolder(itemStudentBinding.root){
         @SuppressLint("SetTextI18n")
         fun onBind(studentData: StudentData, position: Int){
+            itemStudentBinding.btnCall.setOnClickListener {
+                rvAction6.callClick(studentData)
+            }
             itemStudentBinding.btnEdit.setOnClickListener {
                 rvAction6.editClick(studentData, position)
             }
@@ -35,6 +38,7 @@ class StudentAdapter(var rvAction6: RvAction6, var list: ArrayList<StudentData>)
     }
 
     interface RvAction6 {
+        fun callClick(studentData: StudentData)
         fun editClick(studentData: StudentData, position: Int)
         fun deleteClick(studentData: StudentData, position: Int)
     }
