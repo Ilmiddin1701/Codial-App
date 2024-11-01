@@ -9,16 +9,48 @@ import com.ilmiddin1701.codial_app.models.GroupData
 import com.ilmiddin1701.codial_app.models.MentorData
 import com.ilmiddin1701.codial_app.models.StudentData
 
-class MyDbHelper(context: Context) : SQLiteOpenHelper(context, "db_name", null, 1), DbInterface {
+class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VERSION), DbInterface {
+
+    companion object {
+        const val DB_NAME = "db_name"
+        const val VERSION = 1
+        const val ID = "id"
+        const val NAME = "name"
+        const val FIRST_NAME = "first_name"
+        const val LAST_NAME = "last_name"
+
+        const val COURSE_TABLE = "course_table"
+
+
+        const val MENTOR_TABLE = "mentor_table"
+        const val GROUP_TABLE = "group_table"
+        const val STUDENT_TABLE = "student_table"
+
+    }
+
     override fun onCreate(db: SQLiteDatabase?) {
         val courseQuery =
-            "create table course_table(id integer not null primary key autoincrement unique, name text not null, about text not null)"
+            "create table $COURSE_TABLE(" +
+                    "$ID integer not null primary key autoincrement unique, " +
+                    "$NAME text not null, about text not null)"
         val mentorQuery =
-            "create table mentor_table(id integer not null primary key autoincrement unique, first_name text not null, last_name text not null, phoneNumber text not null, course_id not null, foreign key (course_id) references course_table (id))"
+            "create table $MENTOR_TABLE(" +
+                    "$ID integer not null primary key autoincrement unique, " +
+                    "$FIRST_NAME text not null, $LAST_NAME text not null, " +
+                    "phoneNumber text not null, course_id not null, " +
+                    "foreign key (course_id) references $COURSE_TABLE (id))"
         val groupQuery =
-            "create table group_table(id integer not null primary key autoincrement unique, name text not null, mentor_id integer not null, day text not null, time text not null, isOpened integer not null, foreign key (mentor_id) references mentor_table (id))"
+            "create table $GROUP_TABLE(" +
+                    "$ID integer not null primary key autoincrement unique, " +
+                    "$NAME text not null, mentor_id integer not null, day text not null, " +
+                    "time text not null, isOpened integer not null," +
+                    " foreign key (mentor_id) references $MENTOR_TABLE (id))"
         val studentQuery =
-            "create table student_table(id integer not null primary key autoincrement unique, first_name text not null, last_name text not null, number text not null, day text not null, group_id integer not null, foreign key (group_id) references group_table (id))"
+            "create table $STUDENT_TABLE(" +
+                    "$ID integer not null primary key autoincrement unique," +
+                    " $FIRST_NAME text not null, $LAST_NAME text not null, " +
+                    "number text not null, day text not null, group_id integer not null, " +
+                    "foreign key (group_id) references $GROUP_TABLE (id))"
         db?.execSQL(courseQuery)
         db?.execSQL(mentorQuery)
         db?.execSQL(groupQuery)
