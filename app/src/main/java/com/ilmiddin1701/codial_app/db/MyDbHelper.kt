@@ -21,9 +21,10 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
 
         const val COURSE_TABLE = "course_table"
 
-
         const val MENTOR_TABLE = "mentor_table"
+
         const val GROUP_TABLE = "group_table"
+
         const val STUDENT_TABLE = "student_table"
 
     }
@@ -57,16 +58,14 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         db?.execSQL(studentQuery)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-
-    }
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {}
 
     override fun addCourse(courseData: CourseData) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put("name", courseData.name)
+        contentValues.put(NAME, courseData.name)
         contentValues.put("about", courseData.about)
-        database.insert("course_table", null, contentValues)
+        database.insert(COURSE_TABLE, null, contentValues)
         database.close()
     }
 
@@ -92,12 +91,12 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
     override fun addGroup(groupData: GroupData) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put("name", groupData.name)
+        contentValues.put(NAME, groupData.name)
         contentValues.put("mentor_id", groupData.mentorId!!.id)
         contentValues.put("day", groupData.day)
         contentValues.put("time", groupData.time)
         contentValues.put("isOpened", groupData.isOpened)
-        database.insert("group_table", null, contentValues)
+        database.insert(GROUP_TABLE, null, contentValues)
         database.close()
     }
 
@@ -126,27 +125,27 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
     override fun editGroup(groupData: GroupData) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put("name", groupData.name)
+        contentValues.put(NAME, groupData.name)
         contentValues.put("mentor_id", groupData.mentorId!!.id)
         contentValues.put("day", groupData.day)
         contentValues.put("time", groupData.time)
         contentValues.put("isOpened", groupData.isOpened)
-        database.update("group_table", contentValues, "id = ?", arrayOf(groupData.id.toString()))
+        database.update(GROUP_TABLE, contentValues, "$ID = ?", arrayOf(groupData.id.toString()))
     }
 
     override fun deleteGroup(groupData: GroupData) {
         val database = this.writableDatabase
-        database.delete("group_table", "id = ?", arrayOf(groupData.id.toString()))
+        database.delete(GROUP_TABLE, "$ID = ?", arrayOf(groupData.id.toString()))
     }
 
     override fun addMentor(mentorData: MentorData) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put("first_name", mentorData.firstName)
-        contentValues.put("last_name", mentorData.lastName)
+        contentValues.put(FIRST_NAME, mentorData.firstName)
+        contentValues.put(LAST_NAME, mentorData.lastName)
         contentValues.put("phoneNumber", mentorData.phoneNumber)
         contentValues.put("course_id", mentorData.courseId!!.id)
-        database.insert("mentor_table", null, contentValues)
+        database.insert(MENTOR_TABLE, null, contentValues)
         database.close()
     }
 
@@ -174,26 +173,26 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
     override fun editMentor(mentorData: MentorData) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put("first_name", mentorData.firstName)
-        contentValues.put("last_name", mentorData.lastName)
+        contentValues.put(FIRST_NAME, mentorData.firstName)
+        contentValues.put(LAST_NAME, mentorData.lastName)
         contentValues.put("phoneNumber", mentorData.phoneNumber)
-        database.update("mentor_table", contentValues, "id = ?", arrayOf(mentorData.id.toString()))
+        database.update(MENTOR_TABLE, contentValues, "$ID = ?", arrayOf(mentorData.id.toString()))
     }
 
     override fun deleteMentor(mentorData: MentorData) {
         val database = this.writableDatabase
-        database.delete("mentor_table", "id = ?", arrayOf(mentorData.id.toString()))
+        database.delete(MENTOR_TABLE, "$ID = ?", arrayOf(mentorData.id.toString()))
     }
 
     override fun addStudent(studentData: StudentData) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put("first_name", studentData.firstName)
-        contentValues.put("last_name", studentData.lastName)
+        contentValues.put(FIRST_NAME, studentData.firstName)
+        contentValues.put(LAST_NAME, studentData.lastName)
         contentValues.put("number", studentData.number)
         contentValues.put("day", studentData.day)
         contentValues.put("group_id", studentData.groupId!!.id)
-        database.insert("student_table", null, contentValues)
+        database.insert(STUDENT_TABLE, null, contentValues)
         database.close()
     }
 
@@ -222,25 +221,25 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
     override fun editStudent(studentData: StudentData) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put("first_name", studentData.firstName)
-        contentValues.put("last_name", studentData.lastName)
+        contentValues.put(FIRST_NAME, studentData.firstName)
+        contentValues.put(LAST_NAME, studentData.lastName)
         contentValues.put("number", studentData.number)
         contentValues.put("day", studentData.day)
         contentValues.put("group_id", studentData.groupId!!.id)
-        database.update("student_table", contentValues, "id = ?", arrayOf(studentData.id.toString()))
+        database.update(STUDENT_TABLE, contentValues, "$ID = ?", arrayOf(studentData.id.toString()))
     }
 
     override fun deleteStudent(studentData: StudentData) {
         val database = this.writableDatabase
-        database.delete("student_table", "id = ?", arrayOf(studentData.id.toString()))
+        database.delete(STUDENT_TABLE, "$ID = ?", arrayOf(studentData.id.toString()))
     }
 
     override fun getCourseById(id: Int): CourseData {
         val database = this.readableDatabase
         val cursor = database.query(
-            "course_table",
-            arrayOf("id", "name", "about"),
-            "id = ?",
+            COURSE_TABLE,
+            arrayOf(ID, NAME, "about"),
+            "$ID = ?",
             arrayOf(id.toString()),
             null, null, null
         )
@@ -257,8 +256,8 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         val database = this.readableDatabase
         val cursor = database.query(
             "mentor_table",
-            arrayOf("id", "first_name", "last_name", "phoneNumber", "course_id"),
-            "id = ?",
+            arrayOf(ID, FIRST_NAME, LAST_NAME, "phoneNumber", "course_id"),
+            "$ID = ?",
             arrayOf(id.toString()),
             null, null, null
         )
@@ -276,8 +275,8 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
     override fun getGroupById(id: Int): GroupData {
         val database = this.readableDatabase
         val cursor = database.query(
-            "group_table",
-            arrayOf("id", "name", "mentor_id", "day", "time", "isOpened"),
+            GROUP_TABLE,
+            arrayOf(ID, NAME, "mentor_id", "day", "time", "isOpened"),
             "id = ?",
             arrayOf(id.toString()),
             null, null, null
