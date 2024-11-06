@@ -18,40 +18,48 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         const val NAME = "name"
         const val FIRST_NAME = "first_name"
         const val LAST_NAME = "last_name"
+        const val DAY = "day"
+        const val TIME = "time"
+        const val ABOUT = "about"
+        const val NUMBER = "number"
+        const val IS_OPENED = "isOpened"
+        const val PHONE_NUMBER = "phoneNumber"
 
         const val COURSE_TABLE = "course_table"
+        const val COURSE_ID = "course_id"
 
         const val MENTOR_TABLE = "mentor_table"
+        const val MENTOR_ID = "mentor_id"
 
         const val GROUP_TABLE = "group_table"
+        const val GROUP_ID = "group_id"
 
         const val STUDENT_TABLE = "student_table"
-
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
         val courseQuery =
             "create table $COURSE_TABLE(" +
                     "$ID integer not null primary key autoincrement unique, " +
-                    "$NAME text not null, about text not null)"
+                    "$NAME text not null, $ABOUT text not null)"
         val mentorQuery =
             "create table $MENTOR_TABLE(" +
                     "$ID integer not null primary key autoincrement unique, " +
                     "$FIRST_NAME text not null, $LAST_NAME text not null, " +
-                    "phoneNumber text not null, course_id not null, " +
-                    "foreign key (course_id) references $COURSE_TABLE (id))"
+                    "$PHONE_NUMBER text not null, $COURSE_ID not null, " +
+                    "foreign key ($COURSE_ID) references $COURSE_TABLE ($ID))"
         val groupQuery =
             "create table $GROUP_TABLE(" +
                     "$ID integer not null primary key autoincrement unique, " +
-                    "$NAME text not null, mentor_id integer not null, day text not null, " +
-                    "time text not null, isOpened integer not null," +
-                    " foreign key (mentor_id) references $MENTOR_TABLE (id))"
+                    "$NAME text not null, $MENTOR_ID integer not null, $DAY text not null, " +
+                    "$TIME text not null, $IS_OPENED integer not null," +
+                    "foreign key ($MENTOR_ID) references $MENTOR_TABLE ($ID))"
         val studentQuery =
             "create table $STUDENT_TABLE(" +
                     "$ID integer not null primary key autoincrement unique," +
                     " $FIRST_NAME text not null, $LAST_NAME text not null, " +
-                    "number text not null, day text not null, group_id integer not null, " +
-                    "foreign key (group_id) references $GROUP_TABLE (id))"
+                    "$NUMBER text not null, $DAY text not null, $GROUP_ID integer not null, " +
+                    "foreign key ($GROUP_ID) references $GROUP_TABLE ($ID))"
         db?.execSQL(courseQuery)
         db?.execSQL(mentorQuery)
         db?.execSQL(groupQuery)
@@ -64,7 +72,7 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         val database = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(NAME, courseData.name)
-        contentValues.put("about", courseData.about)
+        contentValues.put(ABOUT, courseData.about)
         database.insert(COURSE_TABLE, null, contentValues)
         database.close()
     }
@@ -92,10 +100,10 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         val database = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(NAME, groupData.name)
-        contentValues.put("mentor_id", groupData.mentorId!!.id)
-        contentValues.put("day", groupData.day)
-        contentValues.put("time", groupData.time)
-        contentValues.put("isOpened", groupData.isOpened)
+        contentValues.put(MENTOR_ID, groupData.mentorId!!.id)
+        contentValues.put(DAY, groupData.day)
+        contentValues.put(TIME, groupData.time)
+        contentValues.put(IS_OPENED, groupData.isOpened)
         database.insert(GROUP_TABLE, null, contentValues)
         database.close()
     }
@@ -126,10 +134,10 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         val database = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(NAME, groupData.name)
-        contentValues.put("mentor_id", groupData.mentorId!!.id)
-        contentValues.put("day", groupData.day)
-        contentValues.put("time", groupData.time)
-        contentValues.put("isOpened", groupData.isOpened)
+        contentValues.put(MENTOR_ID, groupData.mentorId!!.id)
+        contentValues.put(DAY, groupData.day)
+        contentValues.put(TIME, groupData.time)
+        contentValues.put(IS_OPENED, groupData.isOpened)
         database.update(GROUP_TABLE, contentValues, "$ID = ?", arrayOf(groupData.id.toString()))
     }
 
@@ -143,8 +151,8 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         val contentValues = ContentValues()
         contentValues.put(FIRST_NAME, mentorData.firstName)
         contentValues.put(LAST_NAME, mentorData.lastName)
-        contentValues.put("phoneNumber", mentorData.phoneNumber)
-        contentValues.put("course_id", mentorData.courseId!!.id)
+        contentValues.put(PHONE_NUMBER, mentorData.phoneNumber)
+        contentValues.put(COURSE_ID, mentorData.courseId!!.id)
         database.insert(MENTOR_TABLE, null, contentValues)
         database.close()
     }
@@ -175,7 +183,7 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         val contentValues = ContentValues()
         contentValues.put(FIRST_NAME, mentorData.firstName)
         contentValues.put(LAST_NAME, mentorData.lastName)
-        contentValues.put("phoneNumber", mentorData.phoneNumber)
+        contentValues.put(PHONE_NUMBER, mentorData.phoneNumber)
         database.update(MENTOR_TABLE, contentValues, "$ID = ?", arrayOf(mentorData.id.toString()))
     }
 
@@ -189,9 +197,9 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         val contentValues = ContentValues()
         contentValues.put(FIRST_NAME, studentData.firstName)
         contentValues.put(LAST_NAME, studentData.lastName)
-        contentValues.put("number", studentData.number)
-        contentValues.put("day", studentData.day)
-        contentValues.put("group_id", studentData.groupId!!.id)
+        contentValues.put(NUMBER, studentData.number)
+        contentValues.put(DAY, studentData.day)
+        contentValues.put(GROUP_ID, studentData.groupId!!.id)
         database.insert(STUDENT_TABLE, null, contentValues)
         database.close()
     }
@@ -223,9 +231,9 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         val contentValues = ContentValues()
         contentValues.put(FIRST_NAME, studentData.firstName)
         contentValues.put(LAST_NAME, studentData.lastName)
-        contentValues.put("number", studentData.number)
-        contentValues.put("day", studentData.day)
-        contentValues.put("group_id", studentData.groupId!!.id)
+        contentValues.put(NUMBER, studentData.number)
+        contentValues.put(DAY, studentData.day)
+        contentValues.put(GROUP_ID, studentData.groupId!!.id)
         database.update(STUDENT_TABLE, contentValues, "$ID = ?", arrayOf(studentData.id.toString()))
     }
 
@@ -238,7 +246,7 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         val database = this.readableDatabase
         val cursor = database.query(
             COURSE_TABLE,
-            arrayOf(ID, NAME, "about"),
+            arrayOf(ID, NAME, ABOUT),
             "$ID = ?",
             arrayOf(id.toString()),
             null, null, null
@@ -255,8 +263,8 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
     override fun getMentorById(id: Int): MentorData {
         val database = this.readableDatabase
         val cursor = database.query(
-            "mentor_table",
-            arrayOf(ID, FIRST_NAME, LAST_NAME, "phoneNumber", "course_id"),
+            MENTOR_TABLE,
+            arrayOf(ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER, COURSE_ID),
             "$ID = ?",
             arrayOf(id.toString()),
             null, null, null
@@ -276,8 +284,8 @@ class MyDbHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, VE
         val database = this.readableDatabase
         val cursor = database.query(
             GROUP_TABLE,
-            arrayOf(ID, NAME, "mentor_id", "day", "time", "isOpened"),
-            "id = ?",
+            arrayOf(ID, NAME, MENTOR_ID, DAY, TIME, IS_OPENED),
+            "$ID = ?",
             arrayOf(id.toString()),
             null, null, null
         )
