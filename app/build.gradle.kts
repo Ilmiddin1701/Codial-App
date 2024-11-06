@@ -50,9 +50,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     //noinspection UseTomlInstead
-    implementation ("com.github.florent37:runtime-permission-kotlin:1.1.2")
-
-    //noinspection UseTomlInstead
     implementation("com.intuit.sdp:sdp-android:1.0.6")
 
     //noinspection UseTomlInstead
